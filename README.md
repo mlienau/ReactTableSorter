@@ -23,3 +23,10 @@ var columns = [
 ```
 
 `<TableSorter items={movies} columns={columns} />`
+
+Future Features:
+
+* Conditional table row expressions
+* Better templating
+* Remote Datasources
+* Long Polling or WebSockets
