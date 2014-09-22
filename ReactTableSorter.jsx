@@ -11,6 +11,9 @@ var TableSorter = React.createClass({
 			sortColumn: this.props.sortColumn || null,
 			sortASC: this.props.sortASC || true,
 			pageSize: this.props.pageSize || 25,
+			pageSizeOptions: this.props.pageSizeOptions || [{label: 'ten', value: 10}, {label: '25', value: 25}, {label: '50', value: 50}, {label: '100', value: 100}],
+			pageSizeOptionLabelPath: this.props.pageSizeOptionLabelPath || 'label',
+			pageSizeOptionValuePath: this.props.pageSizeOptionValuePath || 'value',
 			currentPage: this.props.currentPage || 0,
 			hiddenColumns: this.props.hiddenColumns || []
 		};
@@ -105,10 +108,9 @@ var TableSorter = React.createClass({
 
 							<label className="pull-right">
 								<select className="form-control" onChange={this.changePageSize} value={this.state.pageSize}>
-									<option value="10">10</option>
-									<option value="25">25</option>
-									<option value="50">50</option>
-									<option value="100">100</option>
+									{this.state.pageSizeOptions.map(function (item) { 
+										return (<option value={item[this.state.pageSizeOptionValuePath]}>{item[this.state.pageSizeOptionLabelPath]}</option>) 
+									}.bind(this))}
 								</select>
 							</label>
 						</td>
